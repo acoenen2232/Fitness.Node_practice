@@ -1,0 +1,144 @@
+
+// colors
+//-----------------------------
+$blue-cornflower:       #6195ED;
+$blue:                  #143bda;
+$white:                 #FFFFFF;
+$black:                 #000000;
+$gray:                  #7F7F7F;
+$red:                   #E01026;
+$yellow:                #f5f50c;
+$pink:                  #eda0ad;
+$orange:                #ee894e;
+$purple:                #8f3fc4;
+$purple-lavender:       #cbcbf0;
+
+
+
+
+// Derivative colors
+//-----------------------------
+$dark-gray:             darken($gray, 23.14%); //#444
+$darker-gray:           darken($dark-gray, 6.6667%); //#333
+$darkest-gray:          darken($dark-gray, 17.25%); //#181818
+
+// Color palette
+//-----------------------------
+$primary-color: $blue;
+$secondary-color: $black;
+$tertiary-color: $white;
+
+// Font information
+//-----------------------------
+$header-font-family: "Georgia", "Times New Roman", serif;
+$default-font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$default-browser-size: 16;
+$default-font-size: 14px;
+$font-color:    $darker-gray;
+$anchor-color: $darker-gray;
+
+// Z-index variable
+//-----------------------------
+$starting-zindex: 1000;
+$zindex-modal-backdrop: $starting-zindex * 3;
+$zindex-modal: $zindex-modal-backdrop + 1;
+
+// Responsive
+//-----------------------------
+$small-screen-min-width: 320px;
+$small-screen-max-width: 568px;
+$medium-screen-min-width: 768px;
+$medium-screen-max-width: 1024px;
+$large-screen-min-width: 1824px;
+
+// _config.scss
+$font-stack: Arial, Helvetica, sans-serif;
+$light-color: #faf6fc;
+$primary-color: #b395ca;
+$secondary-color: #534eb8;
+
+// Set text color based on bg
+@function set-text-color($color) {
+  @if(lightness($color) > 70) {
+    @return #333;
+  } @else {
+    @return #fff;
+  }
+}
+
+// Set background & text color
+@mixin set-background($color) {
+  background-color: $color;
+  color: set-text-color($color)
+}
+
+
+
+
+
+// _utilities.scss
+.container {
+
+    max-width: 1100px;
+    padding: 0 30px;
+    margin: 0 auto;
+    overflow: auto;
+  }
+
+  
+  // Margin & padding classes
+  $spaceamounts: (1,2,3,4,5);
+  
+  @each $space in $spaceamounts {
+    .m-#{$space} {
+      margin: #{$space}rem;
+    }
+    .my-#{$space} {
+      margin: #{$space}rem 0;
+    }
+  
+    .p-#{$space} {
+      padding: #{$space}rem;
+    }
+    .py-#{$space} {
+      padding: #{$space}rem 0;
+    }
+  }
+  
+  // _buttons.scss
+  %btn {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 8px 20px;
+    margin: 3px;
+  
+    &:hover {
+      transform: scale(.98);
+    }
+  }
+  
+  .btn-primary {
+    @extend %btn;
+    @include set-background(lighten($primary-color, 10%));
+  }
+  
+  .btn-secondary {
+    @extend %btn;
+    @include set-background($secondary-color);
+  }
+  
+  
+  // _mobile.scss
+  @media(max-width: 700px) {
+    .showcase {
+      height: 400px;
+  
+      &-content {
+        text-align: center;
+  
+        img {
+          display: none;
+        }
+      }
+    }
+  }
